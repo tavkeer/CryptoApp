@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'package:crypto_design/screens.dart';
 import 'package:http/http.dart' as http;
 
 class Coin {

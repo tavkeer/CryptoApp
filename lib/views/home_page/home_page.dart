@@ -1,10 +1,4 @@
-import 'package:crypto_design/constants.dart';
-import 'package:crypto_design/models/crypto_model.dart';
-import 'package:crypto_design/views/home_page/components/app_bar.dart';
-import 'package:crypto_design/views/home_page/components/coin_list_component.dart';
-import 'package:crypto_design/views/home_page/components/popular_coins.dart';
-import 'package:crypto_design/views/home_page/utils/header_container.dart';
-import 'package:flutter/material.dart';
+import 'package:crypto_design/screens.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -97,7 +91,14 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 10),
 
                   //headerContainer
-                  const HeaderContainer(),
+                  HeaderContainer(
+                      bitcoin: bitcoin,
+                      ethereum: ethereum,
+                      bnb: bnb,
+                      cardano: cardano,
+                      litecoin: litecoin,
+                      dog: dog,
+                      solana: solana),
                   const SizedBox(height: 20),
 
                   //text
@@ -134,7 +135,7 @@ class _HomePageState extends State<HomePage> {
 
                   //text
                   Text(
-                    "Coin",
+                    "Coins",
                     style: TextStyle(
                       fontSize: height * 0.025,
                       fontWeight: FontWeight.w600,
@@ -204,7 +205,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ],
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

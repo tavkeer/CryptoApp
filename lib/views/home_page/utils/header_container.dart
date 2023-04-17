@@ -1,10 +1,23 @@
-import 'package:flutter/material.dart';
-import 'package:crypto_design/views/home_page/utils/custom_elevatedbutton.dart';
-import 'package:crypto_design/views/Buying_page.dart';
-import 'package:crypto_design/views/deposite_page.dart';
+import 'package:crypto_design/screens.dart';
 
 class HeaderContainer extends StatelessWidget {
-  const HeaderContainer({super.key});
+  final dynamic bitcoin;
+  final dynamic ethereum;
+  final dynamic bnb;
+  final dynamic cardano;
+  final dynamic litecoin;
+  final dynamic dog;
+  final dynamic solana;
+  const HeaderContainer({
+    Key? key,
+    required this.bitcoin,
+    required this.ethereum,
+    required this.bnb,
+    required this.cardano,
+    required this.litecoin,
+    required this.dog,
+    required this.solana,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +76,14 @@ class HeaderContainer extends StatelessWidget {
                   ontap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BuyingPage(),
+                      builder: (context) => BuyingPage(
+                          bitcoin: bitcoin,
+                          ethereum: ethereum,
+                          bnb: bnb,
+                          cardano: cardano,
+                          litecoin: litecoin,
+                          dog: dog,
+                          solana: solana),
                     ),
                   ),
                 ),

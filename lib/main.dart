@@ -1,6 +1,4 @@
-import 'package:crypto_design/constants.dart';
-import 'package:crypto_design/views/home_page/home_page.dart';
-import 'package:flutter/material.dart';
+import 'screens.dart';
 
 void main() {
   runApp(const MyApp());

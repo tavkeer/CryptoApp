@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:crypto_design/screens.dart';
 
 class DetailsPage extends StatelessWidget {
   final String text;
@@ -11,7 +11,10 @@ class DetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(text),
+        child: Text(
+          text,
+          style: const TextStyle(color: Colors.white),
+        ),
       ),
     );
   }

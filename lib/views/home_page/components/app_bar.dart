@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
-import 'package:crypto_design/constants.dart';
+import 'package:crypto_design/screens.dart';
 
 class HomePageAppBar extends StatelessWidget {
   const HomePageAppBar({super.key});

@@ -1,13 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:flutter/material.dart';
-
-import 'package:crypto_design/views/buying_page.dart';
-import 'package:crypto_design/views/home_page/utils/custom_elevatedbutton.dart';
+import 'package:crypto_design/screens.dart';
 
 class PopularCoins extends StatelessWidget {
   final String path;
   final dynamic coin;
   final String coinImage;
+
   const PopularCoins({
     Key? key,
     required this.path,
@@ -118,11 +115,11 @@ class PopularCoins extends StatelessWidget {
                     ontap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const BuyingPage(),
+                        builder: (context) => CheckoutPage(coin: coin),
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],

@@ -1,18 +1,19 @@
-import 'package:crypto_design/details_page/details_page.dart';
-import 'package:flutter/material.dart';
+import 'package:crypto_design/screens.dart';
 
 class CoinComponent extends StatelessWidget {
   final double height;
   final double width;
   final dynamic coin;
   final String coinImage;
-  const CoinComponent({
-    Key? key,
-    required this.height,
-    required this.width,
-    required this.coin,
-    required this.coinImage,
-  }) : super(key: key);
+  final bool showPercent;
+  const CoinComponent(
+      {Key? key,
+      required this.height,
+      required this.width,
+      required this.coin,
+      required this.coinImage,
+      this.showPercent = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +64,8 @@ class CoinComponent extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailsPage(
-            text: coin.name,
+          builder: (context) => CheckoutPage(
+            coin: coin,
           ),
         ),
       ),
@@ -98,28 +99,36 @@ class CoinComponent extends StatelessWidget {
                 ),
               ),
             ),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: '${change24h(coin.percentChange24h)}%\n',
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: upOrDown,
-                      fontWeight: FontWeight.bold,
-                      height: 1.5,
+            (showPercent)
+                ? RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                          text: '${change24h(coin.percentChange24h)}%\n',
+                          style: TextStyle(
+                            fontSize: 17,
+                            color: upOrDown,
+                            fontWeight: FontWeight.bold,
+                            height: 1.5,
+                          ),
+                        ),
+                        TextSpan(
+                          text: toUSD(coin.price),
+                          style: const TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                          ),
+                        )
+                      ],
                     ),
-                  ),
-                  TextSpan(
-                    text: toUSD(coin.price),
+                  )
+                : Text(
+                    toUSD(coin.price),
                     style: const TextStyle(
                       fontSize: 15,
                       color: Colors.white,
                     ),
-                  )
-                ],
-              ),
-            ),
+                  ),
           ],
         ),
       ),

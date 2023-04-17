@@ -1,0 +1,128 @@
+import 'package:crypto_design/details_page/details_page.dart';
+import 'package:flutter/material.dart';
+
+class CoinComponent extends StatelessWidget {
+  final double height;
+  final double width;
+  final dynamic coin;
+  final String coinImage;
+  const CoinComponent({
+    Key? key,
+    required this.height,
+    required this.width,
+    required this.coin,
+    required this.coinImage,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    Color upOrDown = Colors.green;
+
+    //functions for string manuplation
+    String toUSD(double? number) {
+      // Convert number to a string with two decimal places
+      String numberString = number!.toStringAsFixed(2);
+
+      // Split the number into whole and decimal parts
+      List<String> parts = numberString.split(".");
+
+      // Add commas to the whole part
+      String whole = parts[0];
+      String formattedWhole = "";
+      for (int i = whole.length - 1, j = 0; i >= 0; i--, j++) {
+        if (j != 0 && j % 3 == 0) {
+          formattedWhole = ",$formattedWhole";
+        }
+        formattedWhole = whole[i] + formattedWhole;
+      }
+
+      // Combine the whole and decimal parts with the USD symbol
+      debugPrint("\$$formattedWhole.${parts[1]}");
+      return "\$$formattedWhole.${parts[1]}";
+    }
+
+    String change24h(double? string) {
+      String ret;
+      //convert string to double
+      ret = string!.toStringAsFixed(2);
+
+      //add a positive sign as it is not given by API
+      if (!ret[0].startsWith("-")) {
+        ret = "+$ret";
+        debugPrint(ret);
+      } else {
+        upOrDown = Colors.red;
+      }
+
+      //return the formated text
+      return ret;
+    }
+
+    //actual returning container
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetailsPage(
+            text: coin.name,
+          ),
+        ),
+      ),
+      child: Container(
+        height: height * 0.075,
+        width: width,
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        child: Row(
+          children: [
+            Expanded(
+              child: ListTile(
+                contentPadding: const EdgeInsets.all(0),
+                leading: CircleAvatar(
+                  child: Image.asset(
+                    coinImage,
+                  ),
+                ),
+                title: Text(
+                  coin.name.toString(),
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
+                ),
+                subtitle: Text(
+                  coin.symbol.toString(),
+                  style: TextStyle(
+                    color: Colors.white.withOpacity(0.5),
+                    fontSize: 13,
+                  ),
+                ),
+              ),
+            ),
+            RichText(
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: '${change24h(coin.percentChange24h)}%\n',
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: upOrDown,
+                      fontWeight: FontWeight.bold,
+                      height: 1.5,
+                    ),
+                  ),
+                  TextSpan(
+                    text: toUSD(coin.price),
+                    style: const TextStyle(
+                      fontSize: 15,
+                      color: Colors.white,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

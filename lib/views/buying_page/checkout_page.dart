@@ -91,7 +91,7 @@ class CheckoutPage extends StatelessWidget {
                 height: 15,
               ),
               Text(
-                "100.00 - 2000000.00 INR",
+                "100.00 - 2000000.00 INR`",
                 style: TextStyle(
                   color: Colors.white.withOpacity(0.6),
                   fontWeight: FontWeight.bold,

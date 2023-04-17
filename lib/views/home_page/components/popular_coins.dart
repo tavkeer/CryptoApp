@@ -115,7 +115,10 @@ class PopularCoins extends StatelessWidget {
                     ontap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => CheckoutPage(coin: coin),
+                        builder: (context) => CheckoutPage(
+                          coin: coin,
+                          coinImage: coinImage,
+                        ),
                       ),
                     ),
                   ),

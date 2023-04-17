@@ -1,3 +1,4 @@
+import 'package:crypto_design/details_page/details_page.dart';
 import 'package:crypto_design/screens.dart';
 
 class CoinComponent extends StatelessWidget {
@@ -64,9 +65,7 @@ class CoinComponent extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CheckoutPage(
-            coin: coin,
-          ),
+          builder: (context) => DetailsPage(text: coin.name),
         ),
       ),
       child: Container(

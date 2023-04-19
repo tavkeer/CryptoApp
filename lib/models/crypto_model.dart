@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'package:crypto_design/screens.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,6 +13,7 @@ class Coin {
   double? percentChange90d;
   double? exchangeRates;
   double? marketCap;
+  final Map<String, dynamic>? map;
 
   Coin({
     this.id,
@@ -22,6 +25,7 @@ class Coin {
     this.percentChange90d,
     this.exchangeRates,
     this.marketCap,
+    this.map,
   });
 
   factory Coin.fromJson(Map<String, dynamic> json) {
@@ -35,6 +39,7 @@ class Coin {
       percentChange90d: json['quote']['USD']['percent_change_90d'],
       exchangeRates: json['quote']['USD']['price'],
       marketCap: json['quote']['USD']['market_cap'],
+      map: json['quote']['USD'],
     );
   }
 }
@@ -67,5 +72,6 @@ Future<Coin> fetchCoin(String coinId) async {
     percentChange90d: 0,
     exchangeRates: 0,
     marketCap: 0,
+    map: {},
   );
 }

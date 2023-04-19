@@ -1,5 +1,5 @@
-import 'package:crypto_design/details_page/details_page.dart';
 import 'package:crypto_design/screens.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class CoinComponent extends StatelessWidget {
   final double height;
@@ -7,14 +7,14 @@ class CoinComponent extends StatelessWidget {
   final dynamic coin;
   final String coinImage;
   final bool showPercent;
-  const CoinComponent(
-      {Key? key,
-      required this.height,
-      required this.width,
-      required this.coin,
-      required this.coinImage,
-      this.showPercent = true})
-      : super(key: key);
+  const CoinComponent({
+    Key? key,
+    required this.height,
+    required this.width,
+    required this.coin,
+    required this.coinImage,
+    this.showPercent = true,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,6 @@ class CoinComponent extends StatelessWidget {
       }
 
       // Combine the whole and decimal parts with the USD symbol
-      debugPrint("\$$formattedWhole.${parts[1]}");
       return "\$$formattedWhole.${parts[1]}";
     }
 
@@ -51,7 +50,6 @@ class CoinComponent extends StatelessWidget {
       //add a positive sign as it is not given by API
       if (!ret[0].startsWith("-")) {
         ret = "+$ret";
-        debugPrint(ret);
       } else {
         upOrDown = Colors.red;
       }
@@ -65,7 +63,11 @@ class CoinComponent extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailsPage(text: coin.name),
+          builder: (context) => DetailsPage(
+            coin: coin,
+            lineColor: Colors.pink,
+            data: getChartData(coin.m as Map<String, dynamic>),
+          ),
         ),
       ),
       child: Container(
@@ -132,5 +134,18 @@ class CoinComponent extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  List<FlSpot> getChartData(Map<String, dynamic> priceHistory) {
+    final List<FlSpot> data = [];
+
+    for (var entry in priceHistory.entries) {
+      final timestamp =
+          DateTime.parse(entry.key).millisecondsSinceEpoch.toDouble();
+      final price = entry.value.toDouble();
+      data.add(FlSpot(timestamp, price));
+    }
+
+    return data;
   }
 }

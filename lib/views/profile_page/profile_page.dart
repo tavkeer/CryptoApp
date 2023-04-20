@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:crypto_design/screens.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -41,114 +40,63 @@ class ProfilePage extends StatelessWidget {
                 height: height,
                 width: width,
               ),
-              SizedBox(
-                width: width,
-                child: Row(
-                  children: [
-                    const CustomTags(
-                      title: "Verified",
-                      icon: Icons.done,
-                      color: Colors.green,
-                    ),
-                    const SizedBox(width: 15),
-                    CustomTags(
-                      title: "Regular",
-                      icon: Icons.diamond,
-                      color: Colors.white.withOpacity(0.8),
-                    )
-                  ],
+              const CustomTags(),
+              const SizedBox(height: 10),
+              Divider(
+                height: 1,
+                color: Colors.white.withOpacity(0.5),
+              ),
+              const ProfileItem(
+                title: "Binance Pro",
+                icon: Icons.diamond_outlined,
+              ),
+              const ProfileItem(
+                title: "Referral",
+                icon: Icons.person_add_alt,
+              ),
+              const ProfileItem(
+                title: "Payment Methods",
+                icon: Icons.currency_rupee_outlined,
+              ),
+              const ProfileItem(
+                title: "Security",
+                icon: Icons.lock_outline_rounded,
+              ),
+              const ProfileItem(
+                title: "Gift Card",
+                icon: Icons.card_giftcard,
+              ),
+              const ProfileItem(
+                title: "My Gifts",
+                icon: Icons.card_giftcard,
+              ),
+              const ProfileItem(
+                title: "Clear Cache",
+                icon: Icons.delete,
+              ),
+              const ProfileItem(
+                title: "Help & Support",
+                icon: Icons.help,
+              ),
+              const ProfileItem(
+                title: "Share the app",
+                icon: Icons.share,
+              ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: Text(
+                  "Please do not disclose SMS and Google Authentication codes to anyone, including Binance customer support",
+                  style: TextStyle(
+                    color: Colors.grey.withOpacity(0.8),
+                    height: 1.5,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              )
+              ),
+              const SizedBox(height: 120),
             ],
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class CustomTags extends StatelessWidget {
-  final String title;
-  final IconData icon;
-  final Color color;
-  const CustomTags({
-    Key? key,
-    required this.title,
-    required this.icon,
-    required this.color,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 20,
-      width: 70,
-      color: color.withOpacity(0.4),
-      child: Row(
-        children: [
-          const SizedBox(
-            width: 10,
-          ),
-          Icon(
-            icon,
-            color: color,
-            size: 10,
-          ),
-          const SizedBox(width: 2),
-          Text(
-            title,
-            style: TextStyle(
-              color: color,
-              fontSize: 10,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class UserDetailsSection extends StatelessWidget {
-  final double height;
-  final double width;
-  const UserDetailsSection({
-    Key? key,
-    required this.height,
-    required this.width,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      height: height * 0.2,
-      width: width,
-      child: ListTile(
-        contentPadding: const EdgeInsets.all(0),
-        leading: CircleAvatar(
-          backgroundColor: Colors.grey.withOpacity(0.5),
-          child: Lottie.asset(
-            "assets/profile.json",
-          ),
-        ),
-        title: Text(
-          'ID: 1234567ABC',
-          style: TextStyle(
-            color: Colors.grey.withOpacity(0.5),
-          ),
-        ),
-        subtitle: Text(
-          'Binance-User12AB12',
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.white.withOpacity(0.8),
-            height: 1.5,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        trailing: Icon(
-          Icons.arrow_forward_ios,
-          color: Colors.grey.withOpacity(0.5),
         ),
       ),
     );

@@ -1,5 +1,3 @@
-import 'package:crypto_design/views/onboarding_page/onboarding_page.dart';
-
 import 'screens.dart';
 
 void main() {
@@ -19,7 +17,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Montserrat",
         scaffoldBackgroundColor: backgroundPrimary,
       ),
-      home: const OnBoardingPage(),
+      home: const SplashScreen(),
     );
   }
 }

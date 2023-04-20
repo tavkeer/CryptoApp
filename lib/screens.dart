@@ -15,5 +15,8 @@ export 'package:crypto_design/views/details_page/details_page.dart';
 export 'package:crypto_design/views/portfolio/portfolio_page.dart';
 export 'package:crypto_design/views/services/services_page.dart';
 export 'package:crypto_design/views/trading/trading_page.dart';
+export 'package:crypto_design/views/trading/utils/tradinglist_item.dart';
+export 'package:crypto_design/views/profile_page/profile_page.dart';
+export 'package:crypto_design/views/splash_screen.dart';
 export 'dart:convert';
 export 'dart:math';

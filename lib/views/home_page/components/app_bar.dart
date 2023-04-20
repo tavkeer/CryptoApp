@@ -8,10 +8,18 @@ class HomePageAppBar extends StatelessWidget {
     return AppBar(
       backgroundColor: backgroundPrimary,
       elevation: 0,
-      leading: CircleAvatar(
-        backgroundColor: Colors.grey.withOpacity(0.5),
-        child: Lottie.asset(
-          "assets/profile.json",
+      leading: GestureDetector(
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ProfilePage(),
+          ),
+        ),
+        child: CircleAvatar(
+          backgroundColor: Colors.grey.withOpacity(0.5),
+          child: Lottie.asset(
+            "assets/profile.json",
+          ),
         ),
       ),
       actions: [

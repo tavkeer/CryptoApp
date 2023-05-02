@@ -48,7 +48,7 @@ Future<Coin> fetchCoin(String coinId) async {
       Uri.parse(
           'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id=$coinId'),
       headers: {
-        'X-CMC_PRO_API_KEY': '4c527aea-a15a-4bb7-9bf1-5d86a5194e03',
+        // 'X-CMC_PRO_API_KEY': 'Your own Api key',
         'Accept': 'application/json',
       },
     );
